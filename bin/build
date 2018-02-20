@@ -1,0 +1,28 @@
+#!/bin/bash
+#######################################################
+#
+# Called to build a docker container
+#
+# ./bin/build <realm> <verno>
+#
+# ./bin/build infosat 0.22
+#
+#######################################################
+
+CLIENT=$1
+VER=$2
+MODULE=`cat conf/MODULE`
+
+source conf/defaults
+source conf/$MODULE
+source conf/build
+
+PROXY="--build-arg HTTP_PROXY=${HTTP_PROXY} --build-arg HTTPS_PROXY=${HTTPS_PROXY}"
+B1ARGS=()
+B2ARGS="--build-arg CLIENT=$CLIENT --build-arg TIMEZONE=$TIMEZONE"
+B3ARGS="--build-arg IP=$IP --build-arg SERVERNAME=$SERVERNAME --build-arg FQDN=$FQDN"
+
+CMD="docker build --rm -t jet-${MODULE}:latest -t jet-${MODULE}:${VER}"
+
+exec $CMD "${B1ARGS[@]}" ${B2ARGS} ${B3ARGS} ${PROXY} ${EXARGS} .
+

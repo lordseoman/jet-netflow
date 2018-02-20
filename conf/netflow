@@ -1,0 +1,4 @@
+#!/bin/bash
+
+RN_VOLUMES="-v /mnt/Usage:/opt/Usage -v /opt/Netflow:/Netflow -v /mnt/Archive:/opt/Archive"
+RN_PORTS="-p 9995:9995"

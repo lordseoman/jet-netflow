@@ -1,0 +1,16 @@
+#!/bin/bash
+####################
+#
+# Default variables
+#
+####################
+
+HTTP_PROXY=
+HTTPS_PROXY=
+
+IP=`hostname -i`
+SERVERNAME=`hostname -s`
+FQDN=`hostname -f`
+
+TIMEZONE=Europe/London
+

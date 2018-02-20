@@ -1,0 +1,7 @@
+#!/bin/bash
+
+USER=$1
+MODULE=`cat conf/MODULE`
+
+docker exec -it --user ${USER:-root} jet-${MODULE} /bin/bash
+
